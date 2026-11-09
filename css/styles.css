@@ -1,0 +1,85 @@
+/* Variables */
+:root {
+  --fondo: #101020;
+  --tarjeta: #1d1f3a;
+  --color-principal: #7c5cff;
+  --texto: #ffffff;
+}
+
+/* Selector universal */
+* { box-sizing: border-box; }
+
+/* Selector de elemento */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--fondo);
+  color: var(--texto);
+}
+
+/* Selector agrupado */
+h1, h2, h3 { color: var(--texto); }
+
+img { max-width: 100%; height: auto; }
+
+header, footer {
+  background-color: var(--tarjeta);
+  padding: 1rem;
+}
+footer { text-align: center; }
+main { padding: 1rem; }
+a { color: #b9a8ff; }
+
+/* MAQUETACIÓN 1: Flexbox (encabezado y menú) */
+.barra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+nav ul {            /* selector descendiente */
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+nav a { color: var(--texto); text-decoration: none; }
+nav a:hover { color: var(--color-principal); }   /* pseudoclase */
+
+/* Selector de id */
+#portada { width: 100%; }
+
+/* MAQUETACIÓN 2: Grid (catálogo) */
+.rejilla {
+  display: grid;
+  grid-template-columns: 1fr;    /* móvil: 1 columna */
+  gap: 1rem;
+}
+.tarjeta {          /* selector de clase */
+  background-color: var(--tarjeta);
+  padding: 1rem;
+  border-radius: 10px;
+}
+.tarjeta > h3 { margin: 0.5rem 0; }     /* selector hijo */
+.boton {
+  display: inline-block;
+  background-color: var(--color-principal);
+  color: var(--texto);
+  padding: 0.4rem 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+}
+li:first-child { font-weight: bold; }   /* pseudoclase */
+
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid var(--color-principal); padding: 0.5rem; }
+
+/* Tableta: 2 columnas */
+@media (min-width: 600px) {
+  .rejilla { grid-template-columns: repeat(2, 1fr); }
+}
+/* Escritorio: 3 columnas */
+@media (min-width: 1000px) {
+  .rejilla { grid-template-columns: repeat(3, 1fr); }
+}
